@@ -8,10 +8,9 @@ const maxGuessesMessage = document.getElementById('max-guesses');
 const numberOfGuessesMessage = document.getElementById('number-of-guesses');
 const correctMessage = document.getElementById('correct');
 
-let targetNumber = getRandomNumber(1,99);
-console.log(targetNumber)
+
 let attempts = 0;
-const maxNumberOfAttempts = 5;
+let maxNumberOfAttempts = 5;
 
 // Returns a random number from min (inclusive) to max (exclusive)
 // Usage:
@@ -20,6 +19,7 @@ const maxNumberOfAttempts = 5;
 // > getRandomNumber(1, 50)
 // <- 11
 
+resetButton.style.display = '';
 hideAllMessages();
 
 function getRandomNumber(min, max) {
@@ -28,10 +28,10 @@ function getRandomNumber(min, max) {
 
 function checkGuess() {
   // Get value from guess input element
+  event.preventDefault();
   const guess = parseInt(guessInput.value, 10);
-  attempts = attempts + 1;
-
-  
+  console.log(guess);
+  attempts = attempts + 1;  
 
   if (guess === targetNumber) {
     numberOfGuessesMessage.style.display = '';
@@ -45,9 +45,10 @@ function checkGuess() {
 
   if (guess !== targetNumber) {
     if (guess < targetNumber) {
-      tooLowMessage.style.display = '';
+      tooLowMessage.style.display = '';      
     } else {
-      tooLowMessage.style.display = '';
+      //tooLowMessage.style.display = 'none';
+      tooHighMessage.style.display = '';
     }
 
     const remainingAttempts = maxNumberOfAttempts - attempts;
@@ -67,7 +68,7 @@ function checkGuess() {
 }
 
 function hideAllMessages() {
-  for (let elementIndex = 0; elementIndex <= messages.length; elementIndex++) {
+  for (let elementIndex = 0; elementIndex < messages.length; elementIndex++) {
     messages[elementIndex].style.display = 'none';
   }
 }
@@ -78,10 +79,10 @@ function setup() {
   console.log(`target number: ${targetNumber}`);
 
   // Reset number of attempts
-  maxNumberOfAttempts = 0;
+  maxNumberOfAttempts = 5;
 
   // Enable the input and submit button
-  submitButton.disabeld = false;
+  submitButton.disabled = false;
   guessInput.disabled = false;
 
   hideAllMessages();
