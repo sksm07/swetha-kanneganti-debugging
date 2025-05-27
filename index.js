@@ -11,6 +11,7 @@ const correctMessage = document.getElementById('correct');
 
 let attempts = 0;
 let maxNumberOfAttempts = 5;
+let targetNumber;
 
 // Returns a random number from min (inclusive) to max (exclusive)
 // Usage:
@@ -20,7 +21,7 @@ let maxNumberOfAttempts = 5;
 // <- 11
 
 resetButton.style.display = '';
-hideAllMessages();
+
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -28,7 +29,9 @@ function getRandomNumber(min, max) {
 
 function checkGuess() {
   // Get value from guess input element
+  
   event.preventDefault();
+  hideAllMessages();
   const guess = parseInt(guessInput.value, 10);
   console.log(guess);
   attempts = attempts + 1;  
@@ -60,6 +63,7 @@ function checkGuess() {
   if (attempts === maxNumberOfAttempts) {
     submitButton.disabled = true;
     guessInput.disabled = true;
+    maxGuessesMessage.style.display = '';
   }
 
   guessInput.value = '';
@@ -87,6 +91,7 @@ function setup() {
 
   hideAllMessages();
   resetButton.style.display = 'none';
+  attempts = 0;
 }
 
 submitButton.addEventListener('click', checkGuess);
