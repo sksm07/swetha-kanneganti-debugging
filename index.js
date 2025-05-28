@@ -20,7 +20,7 @@ let targetNumber;
 // > getRandomNumber(1, 50)
 // <- 11
 
-resetButton.style.display = '';
+resetButton.style.display = 'none';
 
 
 function getRandomNumber(min, max) {
@@ -57,7 +57,9 @@ function checkGuess() {
     const remainingAttempts = maxNumberOfAttempts - attempts;
 
     numberOfGuessesMessage.style.display = '';
+    if(remainingAttempts>=2){
     numberOfGuessesMessage.innerHTML = `You guessed ${guess}. <br> ${remainingAttempts} guesses remaining`;
+    }else{numberOfGuessesMessage.innerHTML = `You guessed ${guess}. <br> ${remainingAttempts} guess remaining`;}
   }
 
   if (attempts === maxNumberOfAttempts) {
