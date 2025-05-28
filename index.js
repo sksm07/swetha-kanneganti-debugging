@@ -20,7 +20,7 @@ let targetNumber;
 // > getRandomNumber(1, 50)
 // <- 11
 
-resetButton.style.display = 'none';
+//resetButton.style.display = 'none';
 
 
 function getRandomNumber(min, max) {
