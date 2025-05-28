@@ -20,8 +20,6 @@ let targetNumber;
 // > getRandomNumber(1, 50)
 // <- 11
 
-//resetButton.style.display = 'none';
-
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -44,6 +42,7 @@ function checkGuess() {
 
     submitButton.disabled = true;
     guessInput.disabled = true;
+    resetButton.style.display = '';
     return;
   }
 
@@ -67,11 +66,11 @@ function checkGuess() {
     submitButton.disabled = true;
     guessInput.disabled = true;
     maxGuessesMessage.style.display = '';
+    resetButton.style.display = '';
   }
 
   guessInput.value = '';
 
-  resetButton.style.display = '';
 }
 
 function hideAllMessages() {
