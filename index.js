@@ -44,6 +44,7 @@ function checkGuess() {
 
     submitButton.disabled = true;
     guessInput.disabled = true;
+    return;
   }
 
   if (guess !== targetNumber) {
