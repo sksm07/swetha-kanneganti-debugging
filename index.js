@@ -28,7 +28,6 @@ function getRandomNumber(min, max) {
 function checkGuess() {
   // Get value from guess input element
   
-  event.preventDefault();
   hideAllMessages();
   const guess = parseInt(guessInput.value, 10);
   console.log(guess);
@@ -50,7 +49,6 @@ function checkGuess() {
     if (guess < targetNumber) {
       tooLowMessage.style.display = '';      
     } else {
-      //tooLowMessage.style.display = 'none';
       tooHighMessage.style.display = '';
     }
 
