@@ -42,10 +42,10 @@ function checkGuess() {
     submitButton.disabled = true;
     guessInput.disabled = true;
     resetButton.style.display = '';
-    return;
+    
   }
 
-  if (guess !== targetNumber) {
+  else {
     if (guess < targetNumber) {
       tooLowMessage.style.display = '';      
     } else {
